@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 2026 Mac Ladder — Every Mac, Explained</title>
+<style>
+  :root{
+    --ink:#141416;
+    --ink-2:#3a3a3e;
+    --ink-3:#6b6b72;
+    --paper:#f2f0ec;
+    --card:#ffffff;
+    --rule:#dedad2;
+    --neo:#5b7cfa;
+    --air:#2f9e8f;
+    --pro:#3a3a3f;
+    --imac:#e8743b;
+    --mini:#8a63d2;
+    --studio:#c9a227;
+    --shadow-s:0 1px 2px rgba(20,20,22,.06), 0 2px 8px rgba(20,20,22,.05);
+    --shadow-m:0 2px 4px rgba(20,20,22,.06), 0 10px 28px rgba(20,20,22,.09);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 15% -5%, #ffffff 0%, rgba(255,255,255,0) 60%),
+      radial-gradient(900px 500px at 92% 8%, #fbf9f4 0%, rgba(251,249,244,0) 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:15px;
+    line-height:1.55;
+    letter-spacing:-.01em;
+  }
+  .wrap{max-width:1340px;margin:0 auto;padding:0 34px}
+
+  /* ---------- masthead ---------- */
+  .masthead{padding:64px 0 30px;border-bottom:1.5px solid var(--ink)}
+  .eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--imac)}
+  h1{
+    margin:16px 0 0;
+    font-size:clamp(44px,6.2vw,84px);
+    line-height:.96;
+    letter-spacing:-.045em;
+    font-weight:800;
+  }
+  h1 em{font-style:normal;color:var(--ink-3)}
+  .deck{
+    margin:22px 0 0;max-width:760px;
+    font-size:19px;line-height:1.5;color:var(--ink-2);letter-spacing:-.015em;
+  }
+  .meta-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+  .pill{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:7px 13px;border-radius:999px;
+    background:#fff;border:1px solid var(--rule);
+    font-size:12px;font-weight:600;color:var(--ink-2);
+    box-shadow:var(--shadow-s);
+  }
+  .pill b{color:var(--ink)}
+  .pill .k{width:7px;height:7px;border-radius:2px;background:var(--ink-3)}
+
+  /* ---------- section headings ---------- */
+  .sec{padding:52px 0 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .sec-num{
+    font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ink-3);
+    border:1px solid var(--rule);border-radius:5px;padding:3px 7px;background:#fff;
+  }
+  h2{margin:0;font-size:29px;letter-spacing:-.03em;font-weight:800}
+  .sec-sub{margin:8px 0 26px;color:var(--ink-3);font-size:14.5px;max-width:820px}
+
+  /* ---------- ladder / lineup ---------- */
+  .ladder{
+    background:#fff;border:1px solid var(--rule);border-radius:20px;
+    padding:30px 30px 8px;box-shadow:var(--shadow-m);
+  }
+  .ladder-grid{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:14px;
+    align-items:end;
+  }
+  .station{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+  .device{width:var(--dw,168px);max-width:100%;display:flex;align-items:flex-end;justify-content:center;margin-bottom:0}
+  .device svg{width:100%;height:auto;display:block;filter:drop-shadow(0 2px 3px rgba(20,20,22,.18))}
+  .barwrap{
+    width:100%;display:flex;justify-content:center;align-items:flex-end;
+    height:330px;position:relative;
+  }
+  .col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:100%;height:100%}
+  .bar{
+    width:min(100%,74px);border-radius:9px 9px 4px 4px;position:relative;
+    background:#ecebe6;border:1px solid #e2dfd8;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;
+  }
+  .bar .seg-base{width:100%;background:var(--c);opacity:.92}
+  .station .name{margin-top:14px;font-weight:800;font-size:14.5px;letter-spacing:-.02em;text-align:center;line-height:1.2}
+  .station .chip{margin-top:3px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);text-align:center}
+  .station .money{margin-top:9px;text-align:center;font-size:13px;font-weight:700;white-space:nowrap}
+  .station .money small{display:block;font-weight:600;font-size:11px;color:var(--ink-3);letter-spacing:.01em}
+
+  .legend{
+    display:flex;flex-wrap:wrap;gap:22px;align-items:center;
+    border-top:1px solid var(--rule);margin-top:26px;padding:15px 4px 20px;
+    font-size:12px;color:var(--ink-2);font-weight:600;
+  }
+  .legend .sw{display:inline-flex;align-items:center;gap:8px}
+  .legend .box{width:15px;height:15px;border-radius:4px;border:1px solid #e2dfd8}
+  .legend .box.solid{background:var(--ink-3)}
+  .legend .box.hatch{background:repeating-linear-gradient(135deg,#9a9aa0 0 4px,#d5d5da 4px 8px)}
+  .legend .spacer{flex:1}
+  .legend .hint{font-weight:600;color:var(--ink-3)}
+
+  /* ---------- note cards ---------- */
+  .cards{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:6px;
+  }
+  .note{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    box-shadow:var(--shadow-m);
+    padding:0 0 20px;
+    position:relative;
+    display:flex;flex-direction:column;
+    overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .note:hover{transform:translateY(-3px);box-shadow:0 4px 8px rgba(20,20,22,.07),0 18px 40px rgba(20,20,22,.13)}
+  .note::before{ /* index-card header rule */
+    content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--c);
+  }
+  .tape{
+    position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(-2.5deg);
+    width:78px;height:20px;
+    background:rgba(240,232,205,.78);
+    border-left:1px solid rgba(0,0,0,.05);border-right:1px solid rgba(0,0,0,.05);
+    box-shadow:0 1px 3px rgba(0,0,0,.08);
+    border-radius:2px;
+  }
+  .note-top{padding:24px 22px 0}
+  .note-sku{
+    font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--c);
+  }
+  .note h3{margin:6px 0 0;font-size:24px;letter-spacing:-.035em;font-weight:800;line-height:1.05}
+  .note .tagline{margin:5px 0 0;font-size:13.5px;color:var(--ink-3);font-weight:500;line-height:1.4}
+  .note .dev-row{
+    display:flex;align-items:center;justify-content:center;
+    height:104px;padding:9px 26px;margin:6px 0 0;
+    background:
+      linear-gradient(180deg, #fbfbf9 0%, #f4f3ef 100%);
+    border-top:1px solid #efeee9;border-bottom:1px solid #efeee9;
+  }
+  .note .dev-row svg{width:100%;height:100%;max-width:none;filter:drop-shadow(0 3px 6px rgba(20,20,22,.16))}
+  .specs{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border-bottom:1px solid #efeee9;
+  }
+  .spec{padding:11px 22px;border-right:1px solid #efeee9}
+  .spec:nth-child(2n){border-right:0}
+  .spec .k{font-size:9.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#9b9ba2}
+  .spec .v{font-size:12.5px;font-weight:700;color:var(--ink);margin-top:2px;line-height:1.3}
+  .since{
+    padding:9px 22px;font-size:11px;font-weight:600;color:#8d8d95;
+    background:#fbfaf7;border-bottom:1px solid #efeee9;line-height:1.4;
+  }
+  .note-body{padding:15px 22px 0;flex:1}
+  .note-body p{margin:0 0 12px;font-size:13.4px;color:var(--ink-2);line-height:1.5}
+  .lbl{
+    font-size:9.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#9b9ba2;margin:0 0 5px;
+  }
+  ul.good{margin:0 0 12px;padding:0;list-style:none}
+  ul.good li{
+    position:relative;padding-left:15px;font-size:13px;color:var(--ink-2);
+    line-height:1.45;margin-bottom:3px;
+  }
+  ul.good li::before{
+    content:"";position:absolute;left:0;top:7px;
+    width:6px;height:6px;border-radius:50%;background:var(--c);opacity:.85;
+  }
+  .skip{
+    font-size:12.5px;color:var(--ink-3);line-height:1.45;
+    border-left:2.5px solid #e6e3db;padding-left:10px;margin-bottom:4px;
+  }
+  .skip b{color:var(--ink-2)}
+  .price{
+    margin:16px 22px 0;padding:13px 15px;border-radius:9px;
+    background:linear-gradient(180deg,#faf9f6,#f4f2ec);
+    border:1px solid #e9e6de;
+    display:flex;align-items:flex-end;justify-content:space-between;gap:10px;
+  }
+  .price .from .k, .price .full .k{
+    font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#9b9ba2;
+  }
+  .price .from .v{font-size:23px;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-top:1px}
+  .price .full{text-align:right}
+  .price .full .v{font-size:19px;font-weight:800;letter-spacing:-.025em;color:var(--c);line-height:1.1;margin-top:1px}
+  .price .full .note-x{font-size:10.5px;color:#9b9ba2;font-weight:600;margin-top:3px;line-height:1.3}
+
+  /* ---------- price bars section ---------- */
+  .chart{
+    background:#fff;border:1px solid var(--rule);border-radius:20px;padding:30px 30px 22px;
+    box-shadow:var(--shadow-m);
+  }
+  .row{display:grid;grid-template-columns:150px 1fr 112px;align-items:center;gap:16px;padding:9px 0}
+  .row + .row{border-top:1px solid #f3f1ec}
+  .row .rname{font-size:13.5px;font-weight:700;letter-spacing:-.01em}
+  .row .rname small{display:block;font-weight:600;font-size:11px;color:var(--ink-3)}
+  .track{position:relative;height:26px;background:#f6f4ef;border-radius:5px;overflow:hidden;border:1px solid #eeebe4}
+  .fill{position:absolute;left:0;top:0;bottom:0;border-radius:4px}
+  .fill.base{background:var(--c)}
+  .fill.grow{min-width:3px;background:repeating-linear-gradient(135deg,var(--c) 0 5px,color-mix(in srgb,var(--c) 45%,#fff) 5px 10px);
+    box-shadow:inset 1px 0 0 rgba(255,255,255,.7)}
+  .row .rmax{font-size:13px;font-weight:800;text-align:right;letter-spacing:-.02em}
+  .row .rmax small{display:block;font-size:10.5px;font-weight:600;color:var(--ink-3)}
+  .axis{
+    display:grid;grid-template-columns:150px 1fr 112px;gap:16px;
+    border-top:1.5px solid var(--ink);margin-top:8px;padding-top:9px;
+  }
+  .ticks{grid-column:2;position:relative;height:16px}
+  .tick{position:absolute;top:0;transform:translateX(-50%);font-size:10.5px;font-weight:700;color:var(--ink-3)}
+  .gridline{position:absolute;top:0;bottom:0;width:1px;background:#e7e3da;z-index:0}
+
+  /* ---------- decision table ---------- */
+  .decide{
+    background:#fff;border:1px solid var(--rule);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-m);
+  }
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:14px 20px;vertical-align:top}
+  thead th{
+    background:#faf9f6;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ink-3);border-bottom:1.5px solid var(--rule);
+  }
+  tbody tr + tr td{border-top:1px solid #f3f1ec}
+  tbody tr:nth-child(even){background:#fcfbf8}
+  tbody tr:hover{background:#faf7f0}
+  td.if{font-size:13.5px;color:var(--ink-2);width:52%}
+  td.buy{font-size:13.5px;font-weight:700;white-space:nowrap}
+  td.buy .badge{
+    display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:800;
+    background:color-mix(in srgb, var(--c) 14%, #fff);
+    color:color-mix(in srgb, var(--c) 42%, #141416);
+    border:1px solid color-mix(in srgb, var(--c) 30%, #fff);
+  }
+  td.why{font-size:12.5px;color:var(--ink-3);width:28%}
+
+  /* ---------- callouts ---------- */
+  .callouts{display:grid;grid-template-columns:1.25fr 1fr;gap:26px}
+  .callout{
+    background:#fff;border:1px solid var(--rule);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow-s);
+  }
+  .callout.warn{background:linear-gradient(180deg,#fffaf5,#fff);border-color:#f0dcc8}
+  .callout h4{margin:0 0 8px;font-size:15px;letter-spacing:-.02em;font-weight:800}
+  .callout p{margin:0 0 10px;font-size:13.4px;color:var(--ink-2);line-height:1.55}
+  .callout p:last-child{margin-bottom:0}
+  table.hike{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:12px}
+  table.hike td{padding:5px 0;border-top:1px solid #f1e4d6;font-weight:700;color:var(--ink-2)}
+  table.hike tr:first-child td{border-top:0}
+  table.hike td:first-child{font-weight:600;color:var(--ink-3)}
+  table.hike td:nth-child(2){text-align:right;color:#b4551f;padding-right:12px;white-space:nowrap}
+  table.hike td.d{font-weight:600;color:var(--ink-3);text-align:right;white-space:nowrap}
+  .callout .big{
+    font-size:34px;font-weight:800;letter-spacing:-.04em;line-height:1;margin:2px 0 6px;color:#b4551f;
+  }
+
+  /* ---------- footer ---------- */
+  footer{margin-top:56px;border-top:1.5px solid var(--ink);padding:26px 0 70px}
+  .foot-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px}
+  footer h5{margin:0 0 10px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  footer p,footer li{font-size:12px;color:var(--ink-2);line-height:1.6}
+  footer ul{margin:0;padding-left:16px}
+  footer a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid #d8d4cb}
+  .colophon{margin-top:22px;font-size:11px;color:#9b9ba2}
+
+  /* ---------- print ---------- */
+  @page{size:A3 portrait;margin:11mm}
+  @media print{
+    body{background:#fff;font-size:12.5px}
+    .wrap{max-width:none;padding:0}
+    .note:hover{transform:none;box-shadow:var(--shadow-m)}
+    .masthead{padding-top:0}
+    .sec{padding-top:26px}
+    /* never avoid a break on a block taller than the sheet — that clips it */
+    .sec,.cards,.chart,.decide,.callouts{break-inside:auto;page-break-inside:auto}
+    .note,.station,table.hike,.callout,.row,.legend{
+      break-inside:avoid;page-break-inside:avoid;
+    }
+    .cards{grid-template-columns:repeat(3,1fr);gap:12px}
+    .note{box-shadow:none;border-color:#d8d4cb}
+    /* compact so a full row of cards fits one sheet */
+    .note-top{padding:16px 18px 0}
+    .note h3{font-size:21px}
+    .note .tagline{font-size:12.5px}
+    .note .dev-row{height:78px;padding:6px 18px}
+    .spec{padding:8px 18px}
+    .spec .v{font-size:11.5px}
+    .note-body{padding:11px 18px 0}
+    .note-body p{font-size:11.6px;margin-bottom:9px}
+    ul.good li{font-size:11.4px;margin-bottom:2px}
+    .skip{font-size:11.2px}
+    .since{font-size:10px;padding:7px 18px}
+    .price{margin:11px 18px 0;padding:10px 12px}
+    .price .from .v{font-size:20px}
+    .price .full .v{font-size:17px}
+    .ladder,.chart,.decide{box-shadow:none}
+    footer{margin-top:26px;padding-bottom:0}
+    a{color:inherit}
+  }
+  /* print overrides LAST so the narrow-screen rules above cannot win in print */
+  @media print{
+    .cards{grid-template-columns:repeat(3,1fr)!important;gap:12px!important}
+    .callouts{grid-template-columns:1.2fr 1fr!important;gap:16px!important}
+    .row,.axis{grid-template-columns:150px 1fr 112px!important}
+    .foot-grid{grid-template-columns:1.1fr 1fr!important;gap:26px!important}
+    .ladder-grid{grid-template-columns:repeat(3,1fr)!important;row-gap:26px!important}
+  }
+
+  @media (max-width:1080px){
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .callouts{grid-template-columns:1fr}
+  }
+  @media (max-width:760px){
+    .cards{grid-template-columns:1fr}
+    .ladder-grid{grid-template-columns:repeat(3,1fr);row-gap:34px}
+    .row,.axis{grid-template-columns:96px 1fr 84px}
+    .foot-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ================= MASTHEAD ================= -->
+  <header class="masthead">
+    <div class="eyebrow"><span class="dot"></span> Apple Mac lineup &nbsp;·&nbsp; verified October 2026</div>
+    <h1>The 2026<br>Mac Ladder</h1>
+    <p class="deck">
+      Six computers, one decision. Every Mac Apple sells right now on a single page —
+      what each one actually is, who it's for, and what it costs when you stop being sensible
+      and tick every box.
+    </p>
+    <div class="meta-row">
+      <span class="pill"><span class="k"></span> Prices: <b>apple.com, 21 Oct 2026</b></span>
+      <span class="pill"><span class="k"></span> USD, before tax &amp; AppleCare</span>
+      <span class="pill"><span class="k"></span> Range: <b>$699 → $18,299</b></span>
+      <span class="pill"><span class="k"></span> Mac Pro: <b>discontinued</b></span>
+    </div>
+  </header>
+
+  <!-- ================= 01 · THE LADDER ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>The lineup, ordered by entry price</h2>
+    </div>
+    <p class="sec-sub">
+      Left to right by the price you pay to walk in the door — the true rungs of the ladder, from $699 to $2,499.
+      Bar height is that starting price on a logarithmic scale, which keeps a $699 laptop visible next to a
+      $2,499 workstation. What each one costs when maxed out is noted beneath, and charted in section 03.
+    </p>
+
+    <div class="ladder">
+      <div class="ladder-grid" id="ladderGrid"></div>
+      <div class="legend">
+        <span class="sw"><span class="box solid"></span> Bar = starting price (log scale, so every rung climbs)</span>
+        <span class="spacer"></span>
+        <span class="hint">Each card's ceiling is the most expensive configuration Apple will sell you. Compare them all in section 03.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 02 · NOTE CARDS ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>Six note cards</h2>
+    </div>
+    <p class="sec-sub">
+      One card per machine: what it is, what it's genuinely good at, when to walk away, and the two prices that matter —
+      as it ships, and with every option maxed.
+    </p>
+
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <!-- ================= 03 · PRICE CHART ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2>Base price vs. fully loaded</h2>
+    </div>
+    <p class="sec-sub">
+      Linear scale this time — so you can see how far the ceiling runs away from the floor.
+    </p>
+    <div class="chart">
+      <div id="bars"></div>
+      <div class="axis">
+        <div></div>
+        <div class="ticks" id="ticks"></div>
+        <div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 04 · DECISION ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2>Buy this if…</h2>
+    </div>
+    <p class="sec-sub">Start with the job, not the chip. The right Mac is the cheapest one that doesn't make you wait.</p>
+    <div class="decide">
+      <table>
+        <thead>
+          <tr><th>If this is you…</th><th>Buy</th><th>Because</th></tr>
+        </thead>
+        <tbody id="decideBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 05 · CONTEXT ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <h2>Two things to know before you configure</h2>
+    </div>
+    <div class="callouts">
+      <div class="callout warn">
+        <h4>The RAM tax is the story of 2026</h4>
+        <div class="big">up to +$7,500</div>
+        <p>
+          A worldwide shortage of memory and flash — driven by AI data-center demand — pushed Apple into its
+          broadest price increase in years on <b>25 June 2026</b>. Every Mac rose, and memory upgrade prices
+          in some cases <b>doubled</b>.
+        </p>
+        <table class="hike">
+          <tbody>
+            <tr><td>MacBook Neo</td><td>+$100</td><td class="d">$599 → $699</td></tr>
+            <tr><td>MacBook Air</td><td>+$200</td><td class="d">entry now $1,299</td></tr>
+            <tr><td>MacBook Pro</td><td>+$300</td><td class="d">Max tiers +$500–600</td></tr>
+            <tr><td>iMac 24"</td><td>+$200</td><td class="d">entry now $1,499</td></tr>
+            <tr><td>Mac mini</td><td>+$200</td><td class="d">on the previous M4 Pro</td></tr>
+            <tr><td>Mac Studio</td><td>+$1,300</td><td class="d">biggest jump, M3 Ultra</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The result is that <b>the upgrade grid, not the base machine, now decides your bill.</b> On a Mac Studio,
+          going from 96&nbsp;GB to 256&nbsp;GB of unified memory adds <b>$4,000</b>; going from 1&nbsp;TB to 16&nbsp;TB
+          of storage adds <b>$7,500</b>. Those two ticks alone cost more than the whole computer — and a
+          <b>512&nbsp;GB</b> Studio, the largest memory Apple has ever shipped, arrives in late October 2026.
+        </p>
+        <p><b>Practical rule:</b> buy the RAM you'll need in three years. Buy the storage you need next year — external
+        SSDs are far cheaper per terabyte.</p>
+      </div>
+
+      <div class="callout">
+        <h4>Goodbye Mac Pro</h4>
+        <p>
+          The Mac Pro was discontinued in <b>March 2026</b>. Its product page now redirects to the general Mac hub,
+          and the lineup listed for sale is exactly the six machines on this page.
+        </p>
+        <p>
+          The practical consequence: <b>there is no longer a Mac with internal PCIe slots or user-expandable
+          storage.</b> If your work needs capture cards, fibre cards or big internal RAID, that now means
+          Thunderbolt enclosures hanging off a <b>Mac Studio</b>, which is now Apple's flagship desktop. Apple's
+          own answer is Thunderbolt 5 and an external PCIe chassis.
+        </p>
+        <p>
+          It also makes the ladder simpler than it has been in a decade: one laptop family per tier, one
+          consumer desktop, one small desktop, one big desktop.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <h5>How the numbers were built</h5>
+        <p>
+          Starting prices are the current U.S. list prices read directly from Apple's online store on
+          21&nbsp;October&nbsp;2026. "Fully loaded" means that model's <em>most expensive orderable configuration</em>:
+          top chip bin, maximum unified memory, maximum SSD, and — where offered — nano-texture glass. Prices exclude
+          tax, AppleCare+, and software. Apple changes configurations without notice, so treat every figure as
+          approximate and confirm at checkout.
+        </p>
+        <p class="colophon">
+          Built as a single self-contained HTML page. No trackers, no dependencies — open it in any browser or print it.
+        </p>
+      </div>
+      <div>
+        <h5>Sources</h5>
+        <ul>
+          <li>Apple online store product pages, retrieved 21 Oct 2026 (apple.com/shop/buy-mac/…)</li>
+          <li>Apple product pages: MacBook Neo, MacBook Air, MacBook Pro, iMac, Mac mini, Mac Studio</li>
+          <li>Daring Fireball — “Memory and Storage Configurations and Pricing for the New Mac Minis and Mac Studios,” Aug 2026</li>
+          <li>9to5Mac — “A maxed-out 16-inch MacBook Pro now has a 5-figure price tag,” 29 Jun 2026</li>
+          <li>Mashable / AppleScoop — maxed Mac Studio M5 Ultra at $18,299</li>
+          <li>The Verge, MacRumors — June 2026 price increases</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+/* ------------------------------------------------------------------
+   DATA — single source of truth for every number on the page.
+   base  = cheapest orderable configuration
+   max   = most expensive orderable configuration
+------------------------------------------------------------------ */
+const MODELS = [
+  {
+    id:'neo', color:'var(--neo)', sku:'MACBOOK NEO · 13"',
+    name:'MacBook Neo', tagline:'The $699 Mac. Yes, really.',
+    chip:'A18 Pro · 6-core CPU', screen:'13" Liquid Retina · 500 nits',
+    mem:'8 GB · fixed', storage:'256 / 512 GB',
+    ports:'USB-C (USB 3) · USB-C (USB 2!) · headphones',
+    size:'2.7 lb · fanless', since:'Announced 4 Mar 2026 · launched at $599, now $699',
+    what:'The on-ramp to macOS, and Apple\u2019s cheapest laptop ever. It runs <b>the A18 Pro — the same class of chip as an iPhone</b>, with one GPU core fused off, 8 GB of memory soldered in, and nothing to configure. Apple\u2019s line is “the magic of Mac at a surprising price.”',
+    good:['Schoolwork: essays, research, slides, PDFs','Browsing, email, streaming, video calls','Front desk, kiosk and sign-in-sheet duty','A cheap, light, tough second machine'],
+    skip:'<b>Not for:</b> video editing, virtual machines, big photo libraries, or anything needing more than 8 GB. The second USB-C port is <b>USB 2 (480 Mb/s)</b>; no MagSafe, no Thunderbolt, no backlit keyboard, and the $699 model has no Touch ID. One external display only.',
+    from:699, full:799, fullNote:'512 GB — genuinely the ceiling', chartBase:699, chartMax:799
+  },
+  {
+    id:'air', color:'var(--air)', sku:'MACBOOK AIR · 13" / 15"',
+    name:'MacBook Air', tagline:'The default Mac for almost everyone.',
+    chip:'M5 · 10-core CPU', screen:'13.6" or 15.3" Liquid Retina · 500 nits',
+    mem:'16 / 24 / 32 GB', storage:'512 GB – 4 TB',
+    ports:'2× Thunderbolt 4 · MagSafe 3 · headphones',
+    size:'2.7–3.3 lb · fanless', since:'M5 refresh Mar 2026 · $200 of the rise is the 2026 hike',
+    what:'Thin, silent, fanless, and up to 18 hours of battery, with a proper MagSafe cable that yanks free instead of launching the laptop off the desk. The M5 update doubled base storage and added Wi-Fi 7. It is the machine Apple expects most people to buy, and it is hard to argue with.',
+    good:['Office work, web apps, spreadsheets, writing','Software development and web design','Photo editing and casual 4K trimming','Students and travellers who want zero noise'],
+    skip:'<b>Not for:</b> long renders, sustained exports or huge compiles — fanless means it throttles. Capped at 32 GB of memory, 60 Hz, no XDR, and two external displays.',
+    from:1299, full:3719, fullNote:'15", 32 GB, 4 TB', chartBase:1299, chartMax:3719
+  },
+  {
+    id:'pro', color:'var(--pro)', sku:'MACBOOK PRO · 14" / 16"',
+    name:'MacBook Pro', tagline:'A workstation that closes.',
+    chip:'M5 · M5 Pro · M5 Max', screen:'XDR mini-LED · 120 Hz · 1600 nits · nano-texture',
+    mem:'16 – 128 GB', storage:'1 TB – 8 TB',
+    ports:'3× Thunderbolt 5 · HDMI · SDXC · MagSafe 3',
+    size:'3.4–4.7 lb · 14" or 16"', since:'M5 generation · +$300 in the 2026 hike, +$500–600 on Max tiers',
+    what:'The only Mac laptop with a genuinely pro screen — Liquid Retina XDR at 120 Hz, mini-LED, 1600 nits in HDR — plus a nano-texture finish that kills glare. Add three Thunderbolt 5 ports, HDMI, an SD slot, and the option of 128 GB and 8 TB. It is also where the price curve breaks: the top 16-inch is a five-figure machine.',
+    good:['Professional video: multicam, 8K, color grading','3D modelling, rendering and motion graphics','Music production with vast sample libraries','Local AI/ML work and heavy Xcode builds'],
+    skip:'<b>Not for:</b> anyone who just wants a fast laptop — an Air does most of it for far less. The M5 Max tiers only pay off if you bill for render time.',
+    from:1999, full:10149, fullNote:'16", M5 Max 18/40, 128 GB, 8 TB, nano-texture', chartBase:1999, chartMax:10149
+  },
+  {
+    id:'imac', color:'var(--imac)', sku:'IMAC · 24"',
+    name:'iMac 24"', tagline:'A great screen that happens to be a computer.',
+    chip:'M4 · 8 or 10-core', screen:'24" 4.5K Retina · 500 nits · 60 Hz',
+    mem:'16 / 24 / 32 GB', storage:'256 GB – 2 TB',
+    ports:'Up to 4× Thunderbolt 4 · Gigabit Ethernet',
+    size:'11.5 mm thin · 12 MP Center Stage', since:'Unchanged since Oct 2024 — the oldest Mac Apple sells',
+    what:'The only Mac that arrives complete: 4.5K screen, six-speaker system, 12 MP camera, keyboard and mouse in one 11.5 mm slab. But it is <b>still on the M4 from October 2024</b> — the only Mac that missed the 2025–26 chip wave. Buy it for the object, not the silicon.',
+    good:['Family, kitchen-table and reception-desk machine','Design work that never leaves one desk','Anyone who wants one cable and zero clutter','Retail, clinic and classroom front-of-house'],
+    skip:'<b>Not for:</b> heavy CPU/GPU work — it tops out at the two-year-old M4 and 32 GB. 60 Hz, no XDR, screen can never be reused or upgraded. MacRumors\u2019 buyer\u2019s guide currently says <b>“Don\u2019t Buy”</b> ahead of a rumored refresh.',
+    from:1499, full:3099, fullNote:'10-core, 32 GB, 2 TB + accessories', chartBase:1499, chartMax:3099
+  },
+  {
+    id:'mini', color:'var(--mini)', sku:'MAC MINI',
+    name:'Mac mini', tagline:'The best value in the entire lineup.',
+    chip:'M6 base · M5 Pro step-up', screen:'Bring your own',
+    mem:'16 – 64 GB', storage:'256 GB – 8 TB',
+    ports:'3× TB4/TB5 · HDMI · Ethernet · 2× USB-C front',
+    size:'5×5 in · 2 in tall', since:'Refreshed 25 Aug 2026 — the M6 is Apple\u2019s first 2 nm chip',
+    what:'A five-inch square starting at $899, and the only Mac with the new <b>M6 — Apple\u2019s first 2 nm chip</b>, with a 12-core CPU and a dual 16-core Neural Engine. You supply the monitor. It is the cheapest way into real desktop performance and the most quietly competent Mac Apple sells.',
+    good:['Developers, sysadmins and home-lab builds','Always-on boxes: Plex, Home Assistant, CI runners','Office and student desktops on a budget','Editors who already own a good display'],
+    skip:'<b>Not for:</b> anyone wanting a bundled screen or a battery. It stops at 64 GB of memory and has no Max or Ultra option, so it cannot replace a Studio for large-model work.',
+    from:899, full:6700, fullNote:'M5 Pro 18/20, 64 GB, 8 TB (+$100 10GbE)', chartBase:899, chartMax:6700
+  },
+  {
+    id:'studio', color:'var(--studio)', sku:'MAC STUDIO',
+    name:'Mac Studio', tagline:'The top of the ladder. No laptop attached.',
+    chip:'M5 Max · M5 Ultra', screen:'Bring your own',
+    mem:'36 – 256 GB now · 512 GB from late Oct', storage:'512 GB – 16 TB',
+    ports:'Up to 6× Thunderbolt 5 · HDMI 2.1 · 10GbE · SDXC',
+    size:'7.7 in square · 3.7 in tall', since:'Refreshed 25 Aug 2026 — M5 Ultra is Apple\u2019s first quad-die chip',
+    what:'The most powerful Mac Apple makes, in a 3.7-inch block. The <b>M5 Ultra</b> is Apple\u2019s first four-die design: up to 36 CPU and 80 GPU cores, 1.2 TB/s of memory bandwidth, and up to 512 GB of unified memory — enough to hold frontier-class open models on a desk. Since the Mac Pro died, this is the flagship.',
+    good:['Running large language models locally','3D render farms and multi-machine VFX','8K/VR finishing, color suites and film DI','Simulation, big data and inference clusters'],
+    skip:'<b>Not for:</b> anyone who will not saturate it. <b>No internal PCIe slots</b> — the one thing the Mac Pro had — and no user upgrades, which is why the ceiling is five figures.',
+    from:2499, full:18299, fullNote:'M5 Ultra 36/80, 256 GB, 16 TB', chartBase:2499, chartMax:18299
+  }
+];
+
+/* ---------------- device silhouettes ---------------- */
+let __uid = 0;
+/* Device silhouettes — flat 2D, tight viewBoxes (no dead space under the feet),
+   so each device sits exactly on top of its bar. */
+const SVG = {
+  laptop:(c,lidInner,o={})=>{
+    const u='gl'+(++__uid), notch=o.notch!==false;
+    return `
+  <svg viewBox="18 16 164 99" role="img" aria-label="MacBook">
+    <defs><linearGradient id="${u}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="${lidInner}"/><stop offset="100%" stop-color="#d9dfe8"/>
+    </linearGradient></defs>
+    <rect x="38" y="18" width="124" height="86" rx="6" fill="${c}" stroke="rgba(0,0,0,.22)" stroke-width="1"/>
+    <rect x="42" y="22" width="116" height="78" rx="3" fill="url(#${u})"/>
+    ${notch?'<rect x="93" y="22" width="14" height="4" rx="2" fill="'+c+'" opacity=".7"/>':''}
+    <path d="M30 104 H170 L178 110 Q179 113 175 113 H25 Q21 113 22 110 Z" fill="${c}" stroke="rgba(0,0,0,.22)" stroke-width="1"/>
+    <rect x="86" y="107" width="28" height="3" rx="1.5" fill="#ffffff" opacity=".45"/>
+  </svg>`;},
+  imac:(c)=>{const u='gi'+(++__uid);return `
+  <svg viewBox="28 12 144 119" role="img" aria-label="iMac">
+    <defs><linearGradient id="${u}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#eaf0f9"/><stop offset="100%" stop-color="#d7e0ee"/>
+    </linearGradient></defs>
+    <rect x="30" y="14" width="140" height="92" rx="6" fill="${c}" stroke="rgba(0,0,0,.22)" stroke-width="1"/>
+    <rect x="34" y="18" width="132" height="76" rx="3" fill="url(#${u})"/>
+    <path d="M30 94 H170 V110 Q170 112 167 112 H33 Q30 112 30 110 Z" fill="${c}" stroke="rgba(0,0,0,.22)" stroke-width="1"/>
+    <rect x="94" y="112" width="12" height="12" fill="${c}" opacity=".85"/>
+    <rect x="74" y="124" width="52" height="5" rx="2.5" fill="${c}" stroke="rgba(0,0,0,.22)" stroke-width="1"/>
+  </svg>`;},
+  mini:(c)=>`
+  <svg viewBox="54 94 92 38" role="img" aria-label="Mac mini">
+    <rect x="56" y="96" width="88" height="34" rx="8" fill="${c}" stroke="rgba(0,0,0,.24)" stroke-width="1"/>
+    <rect x="56" y="96" width="88" height="7" rx="3.5" fill="#ffffff" opacity=".38"/>
+    <circle cx="72" cy="117" r="2.6" fill="rgba(0,0,0,.32)"/>
+    <rect x="86" y="114" width="11" height="6" rx="2" fill="rgba(0,0,0,.32)"/>
+    <rect x="103" y="114" width="11" height="6" rx="2" fill="rgba(0,0,0,.32)"/>
+  </svg>`,
+  studio:(c)=>`
+  <svg viewBox="44 56 112 76" role="img" aria-label="Mac Studio">
+    <rect x="46" y="58" width="108" height="72" rx="11" fill="${c}" stroke="rgba(0,0,0,.24)" stroke-width="1"/>
+    <rect x="46" y="58" width="108" height="9" rx="4.5" fill="#ffffff" opacity=".38"/>
+    <circle cx="63" cy="117" r="2.8" fill="rgba(0,0,0,.32)"/>
+    <rect x="82" y="114" width="12" height="6" rx="2" fill="rgba(0,0,0,.32)"/>
+    <rect x="100" y="114" width="12" height="6" rx="2" fill="rgba(0,0,0,.32)"/>
+    <rect x="118" y="114" width="12" height="6" rx="2" fill="rgba(0,0,0,.32)"/>
+  </svg>`
+};
+
+/* width per machine mirrors real footprint; SVG heights follow the aspect ratio */
+const DWS = {neo:146, air:166, pro:182, imac:158, mini:150, studio:158};
+const SIL = {
+  neo:  SVG.laptop('#6f86f2','#eef1ff',{notch:false}),
+  air:  SVG.laptop('#3aa89a','#eafaf7',{notch:false}),
+  pro:  SVG.laptop('#2c2c30','#e6e9f0',{notch:true}),
+  imac: SVG.imac('#4a86d8'),
+  mini: SVG.mini('#aab0b8'),
+  studio: SVG.studio('#b6bcc4')
+};
+
+const money = n => '$' + n.toLocaleString('en-US');
+
+/* ---------------- render ladder ---------------- */
+const LADDER_ORDER = ['neo','mini','air','imac','pro','studio'];   // ascending starting price
+/* height = log scale of the entry price, so every rung climbs */
+const barH = p => Math.round(30 + (Math.log10(p) - 2.8) * 220);
+
+document.getElementById('ladderGrid').innerHTML = LADDER_ORDER.map(id => MODELS.find(x=>x.id===id)).map(m => `
+  <div class="station" style="--c:${m.color}">
+    <div class="barwrap">
+      <div class="col">
+        <div class="device" style="--dw:${DWS[m.id]}px">${SIL[m.id]}</div>
+        <div class="bar" style="height:${barH(m.from)}px">
+          <div class="seg-base" style="height:100%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="name">${m.name}</div>
+    <div class="chip">${m.chip.split(' · ')[0]}</div>
+    <div class="money">${money(m.from)}<small>ceiling ${money(m.full)}</small></div>
+  </div>`).join('');
+
+/* ---------------- render note cards ---------------- */
+document.getElementById('cards').innerHTML = MODELS.map(m => `
+  <article class="note" style="--c:${m.color}">
+    <span class="tape"></span>
+    <div class="note-top">
+      <div class="note-sku">${m.sku}</div>
+      <h3>${m.name}</h3>
+      <p class="tagline">${m.tagline}</p>
+    </div>
+    <div class="dev-row">${SIL[m.id]}</div>
+    <div class="specs">
+      <div class="spec"><div class="k">Chip</div><div class="v">${m.chip}</div></div>
+      <div class="spec"><div class="k">Display</div><div class="v">${m.screen}</div></div>
+      <div class="spec"><div class="k">Memory</div><div class="v">${m.mem}</div></div>
+      <div class="spec"><div class="k">Storage</div><div class="v">${m.storage}</div></div>
+      <div class="spec"><div class="k">Ports</div><div class="v">${m.ports}</div></div>
+      <div class="spec"><div class="k">Size / weight</div><div class="v">${m.size}</div></div>
+    </div>
+    <div class="since">${m.since}</div>
+    <div class="note-body">
+      <p class="lbl">What it is</p>
+      <p>${m.what}</p>
+      <p class="lbl">Genuinely good for</p>
+      <ul class="good">${m.good.map(g=>`<li>${g}</li>`).join('')}</ul>
+      <div class="skip">${m.skip}</div>
+    </div>
+    <div class="price">
+      <div class="from">
+        <div class="k">Starts at</div>
+        <div class="v">${money(m.from)}</div>
+      </div>
+      <div class="full">
+        <div class="k">Fully loaded</div>
+        <div class="v">${money(m.full)}</div>
+        <div class="note-x">${m.fullNote}</div>
+      </div>
+    </div>
+  </article>`).join('');
+
+/* ---------------- render price bars ---------------- */
+const MAX = 18299;
+document.getElementById('bars').innerHTML = LADDER_ORDER.map(id => MODELS.find(x=>x.id===id)).map(m => {
+  const b = (m.chartBase / MAX) * 100;
+  const t = (m.chartMax  / MAX) * 100;
+  return `<div class="row" style="--c:${m.color}">
+    <div class="rname">${m.name}<small>${m.chip.split(' · ')[0]}</small></div>
+    <div class="track">
+      <div class="fill base" style="width:${b}%"></div>
+      <div class="fill grow" style="left:${b}%;width:${t-b}%"></div>
+    </div>
+    <div class="rmax">${money(m.chartMax)}<small>from ${money(m.chartBase)}</small></div>
+  </div>`;
+}).join('');
+
+document.getElementById('ticks').innerHTML = [0,2500,5000,7500,10000,12500,15000,17500]
+  .map(v => `<span class="tick" style="left:${(v/MAX)*100}%">$${v===0?'0':(v/1000)+'k'}</span>`).join('');
+
+/* ---------------- render decision table ---------------- */
+const DECIDE = [
+  ['You want one Mac for email, writing, streaming and school', 'neo', 'From $699. Nothing cheaper exists brand new.'],
+  ['You need a fast, silent laptop that goes all day', 'air', 'The value sweet spot of the whole lineup.', ''],
+  ['You edit video, build 3D, produce music or compile huge projects for a living', 'pro', 'Only Mac laptop with an XDR 120 Hz screen and Max-class silicon.', ''],
+  ['You want a single tidy machine for one desk', 'imac', 'Screen, camera, speakers and computer in one slab.', ''],
+  ['You want the most performance per dollar, monitor already owned', 'mini', 'Starts at $899 with the newest M6 chip.', ''],
+  ['You run large AI models locally, or finish 8K and VR', 'studio', 'The only Mac with an Ultra chip and up to 256 GB.', '']
+];
+document.getElementById('decideBody').innerHTML = DECIDE.map(([job,id_,why]) => {
+  const m = MODELS.find(x=>x.id===id_);
+  return `<tr style="--c:${m.color}">
+    <td class="if">${job}</td>
+    <td class="buy"><span class="badge">${m.name}</span></td>
+    <td class="why">${why}</td>
+  </tr>`;
+}).join('');
+</script>
+</body>
+</html>
